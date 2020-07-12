@@ -1,0 +1,31 @@
+.footer_mini_company {
+    display: block;
+    text-align: left;
+    background-color: #000000;
+    padding: 10px 10px;
+}
+
+.footer_mini_company_logo:before {
+    display: block;
+    padding-top: 23%;
+}
+
+.footer__mini__company__link--nondecored {
+    display: block;
+    margin-top: 10px;
+    margin-left: 0;
+    color: #737373;
+    text-transform: initial;
+}
+
+@media only screen and (max-width: 650px) {
+    .footer_mini_company_logo {
+        display: flex;
+        margin: 0 auto;
+    }
+    .footer__mini__company__link--nondecored {
+        display: flex;
+        justify-content: center;
+        align-self: center;        
+    }
+}

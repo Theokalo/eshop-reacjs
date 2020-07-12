@@ -1,0 +1,9 @@
+.main_Home {
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+    flex-direction: row;
+    justify-content: space-around;
+  }

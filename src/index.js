@@ -2,12 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import eshopReducer from './store/reducer/eshopReducer';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 import * as serviceWorker from './serviceWorker';
+                       
+const store = createStore(eshopReducer);
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}><App /></Provider>,
   document.getElementById('root')
 );
 
