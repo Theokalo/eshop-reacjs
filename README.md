@@ -9,6 +9,6 @@
     <li><a href="http://localhost:3001/" target="_blank">http://localhost:3001/</a></li>
 </ul>
 
-If everything is set well you will something like the picture bellow.
+If everything is set well you will see something like the picture bellow.
 
 ![Image](./src/assets/Capture.PNG)
