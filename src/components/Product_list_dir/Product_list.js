@@ -5,6 +5,7 @@ import ReadMoreAndLess from 'react-read-more-less';
 import AddFavourite from '../Favourite_dir/AddFavourite'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { addToCart } from '../../store/actions/eshopActions'
 
 const Product_list = () => {
     const ReadMore = useRef();
@@ -32,17 +33,11 @@ const Product_list = () => {
             if(cartItem.cart_quantity === cartItem.cart_stock) {
                 toast.dark("Out of stock");
             } else {
-                const setItemToCart = () => (
-                    { type: "ADDTOCART", obj: item }
-                );
-                dispatch(setItemToCart()) 
+                dispatch(addToCart(item)) 
                 toast.success("Product added to cart");
             }
         } else {
-            const setItemToCart = () => (
-                { type: "ADDTOCART", obj: item }
-            );
-            dispatch(setItemToCart()) 
+            dispatch(addToCart(item))  
             toast.success("Product added to cart");
         }
     }

@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import Axios from 'axios'
 import './Favourite.css'
+import { setFavourite } from '../../store/actions/eshopActions'
 
 // Add product from favourite (db and Redux store)
 const AddFavourite = props => {
@@ -9,10 +10,7 @@ const AddFavourite = props => {
     const add = () => {
         Axios.patch(`http://localhost:3000/grocery/${props.id}`,{favorite: "1"})
             .then((res) =>{
-                const setFavourite = () => (
-                    { type: "SETFAVOURITE", obj: res.data }
-                );
-                dispatch(setFavourite()) 
+                dispatch(setFavourite(res.data)) 
             })
     }
     return(

@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import Axios from 'axios'
 import Products from '../Product_list_dir/Product_list'
 import './Home.css'
+import { allProducts } from '../../store/actions/eshopActions'
 
 const Home = () => {
     const dispatch = useDispatch()
@@ -11,10 +12,7 @@ const Home = () => {
         const fetch = async () => {
             await Axios.get('http://localhost:3000/grocery')
                 .then((response) => {
-                    const setProducts = () => (
-                        { type: "PRODUCTS", obj: response.data }
-                    );
-                    dispatch(setProducts()) 
+                    dispatch(allProducts(response.data)) 
                 })
         }
         fetch();

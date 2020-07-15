@@ -4,6 +4,7 @@ import CartLogo from '../../assets/shopping-cart.png'
 import { useDispatch, useSelector } from 'react-redux'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { increase, decrease } from '../../store/actions/eshopActions'
 
 const Cart = () => {
     const cartItems = useSelector(state => state.cart_Red.cart)
@@ -18,22 +19,16 @@ const Cart = () => {
         document.getElementById("mySideCart").style.width = "0";
     }
     // check if product is out of stock. If not increase quantity by clicking on plus button
-    const increase = (item) => {
+    const onIncrease = (item) => {
         if(item.cart_quantity === item.cart_stock) {
             toast.dark("Out of stock");
         } else {
-            const setIncrease = () => (
-                { type: "INCREASE", obj: item }
-            );
-            dispatch(setIncrease()) 
+            dispatch(increase(item)) 
         }
     }
     // decrease quantity by clicking on minus button
-    const decrease = (item) => {
-        const setDecrease = () => (
-            { type: "DECREASE", obj: item }
-        );
-        dispatch(setDecrease()) 
+    const onDecrease = (item) => {
+        dispatch(decrease(item)) 
         toast.error("Product removed");
     }
     return (
@@ -57,9 +52,9 @@ const Cart = () => {
                                     <h4><b>{item.cart_productName}</b></h4> 
                                     <p>Price: {item.cart_price}€</p> 
                                     <div className="quantity_div">
-                                        <input type="button" value="-" className="minus" onClick={()=>{decrease(item)}}/>
+                                        <input type="button" value="-" className="minus" onClick={()=>{onDecrease(item)}}/>
                                         <p className="qty">{item.cart_quantity}</p>
-                                        <input type="button" value="+" className="plus" onClick={()=>{increase(item)}}/>
+                                        <input type="button" value="+" className="plus" onClick={()=>{onIncrease(item)}}/>
                                     </div> 
                                 </div>
                             </div>
